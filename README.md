@@ -8,7 +8,8 @@ MySQL Replication GTID 실습입니다.<br>
 ### MySQL  복제 환경에서 소스(Master)와 복제본(Replica)의 모든 트랜젝션에 부여되는 고유한 식별자
 
 - 핵심
-  - 복제 환경에서 각 Transaction에 고유한 ID를 부여하여 자동 장애 조치(Failover), 편리한 복제 구성 및 관리, 데이터 무결성을 보장
+  - 복제 환경에서 각 Transaction에 고유한 ID를 부여하여 Replica가 "내가 이미 실행한 GTID 목록"을 Source에 보내서
+부족한 것만 달라고 요청하는 방식으로, 자동 장애 조치(Failover), 편리한 복제 구성 및 관리, 데이터 무결성을 보장
   - server_uuid와 transaction_id 조합으로 생성
  
 - 장점
@@ -29,9 +30,11 @@ MySQL Replication GTID 실습입니다.<br>
 
 ---
 
-## 직접 해보기 GTID
+## 직접 해보기
 
 이거 이전은 강의에서 했던 실습과 똑같이 만듦.
+
+### GTID를 사용하지 않았을 때
 
 **GTID를 쓰지 않을 때 위치(binlog pos) 기반으로 복제를 추적**
 
@@ -40,6 +43,10 @@ MySQL Replication GTID 실습입니다.<br>
 - **Exec_Source_Log_Pos**
     - Replica의 SQL Thread가 그중 어디까지 실제로 적용했는지
 <img width="827" height="428" alt="image" src="https://github.com/user-attachments/assets/b1135c89-23bf-4cbe-90f9-6553f1c89519" />
+
+## GTID 사용했을 때
+
+아래와 같이 추가해줌.
 
 ### Source
 
