@@ -9,6 +9,7 @@ MySQL Replication GTID 실습입니다.<br>
 
 - 핵심
   - 복제 환경에서 각 Transaction에 고유한 ID를 부여하여 자동 장애 조치(Failover), 편리한 복제 구성 및 관리, 데이터 무결성을 보장
+  - server_uuid와 transaction_id 조합으로 생성
  
 - 장점
   - 손쉬운 장애 조치 및 복구(Failover)
